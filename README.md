@@ -1,36 +1,159 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# gondalsoft — غوندال برمجيات
 
-## Getting Started
+Bilingual (English + Arabic) company website for **gondalsoft**, an AI-powered software studio
+offering mobile (iOS/Android), web, and AI product development.
 
-First, run the development server:
+Built as a fast, SEO-friendly **static site** and deployed to **Firebase Hosting** via **GitHub Actions**.
+
+---
+
+## Tech stack
+
+| Area | Choice |
+| --- | --- |
+| Framework | [Next.js 16](https://nextjs.org) (App Router) + TypeScript |
+| Styling | [Tailwind CSS v4](https://tailwindcss.com) |
+| i18n | Locale routing `/en` + `/ar` with full RTL support |
+| Output | Static export (`output: "export"`) → `out/` |
+| Hosting | Firebase Hosting |
+| CI/CD | GitHub Actions |
+| Domain | Hostinger (DNS pointed at Firebase) |
+
+Why this stack: static export means the whole site is plain HTML/CSS/JS — extremely fast,
+cheap to host, great for SEO, and a perfect fit for Firebase Hosting + GitHub Actions.
+
+---
+
+## Prerequisites
+
+- [Node.js 20+](https://nodejs.org)
+- [Firebase CLI](https://firebase.google.com/docs/cli): `npm install -g firebase-tools`
+- A Google/Firebase account and a GitHub repository
+
+---
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000/en> or <http://localhost:3000/ar>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build the static site
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+The exported site is written to the `out/` directory.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+  app/
+    [locale]/
+      layout.tsx     # Root layout: sets <html lang dir>, fonts, navbar, footer
+      page.tsx       # Full one-page site (hero, services, work, about, contact …)
+    globals.css      # Brand theme + Tailwind
+  components/        # Navbar, footer, language switcher, contact form, icons, reveal
+  i18n/
+    config.ts        # Locales, direction (rtl/ltr), labels
+    dictionaries.ts  # ALL site text in English + Arabic  ← edit content here
+firebase.json        # Firebase Hosting config (serves out/, root → /en/)
+.firebaserc          # Firebase project id (replace placeholder)
+.github/workflows/   # GitHub Actions: deploy on merge + PR previews
+```
 
-## Deploy on Vercel
+### Editing content / translations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All visible text lives in `src/i18n/dictionaries.ts` under the `en` and `ar` objects.
+Keep both languages in sync — they share the same `Dictionary` type, so TypeScript will
+flag anything you miss.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Firebase setup (one time)
+
+1. Create a project at <https://console.firebase.google.com> (e.g. `gondalsoft`).
+2. Log in and select the project:
+   ```bash
+   firebase login
+   firebase use --add
+   ```
+   This writes your real project id into `.firebaserc` (replace the placeholder
+   `REPLACE_WITH_YOUR_FIREBASE_PROJECT_ID`).
+
+### Manual deploy (optional, to test)
+
+```bash
+npm run build
+firebase deploy --only hosting
+```
+
+Your site goes live at `https://<project-id>.web.app`.
+
+---
+
+## Automated deploy with GitHub Actions
+
+The workflows in `.github/workflows/` build the site and deploy it:
+
+- `firebase-hosting-merge.yml` → deploys to **live** on every push to `main`.
+- `firebase-hosting-pull-request.yml` → deploys a **preview channel** for each PR.
+
+### Configure these in your GitHub repo (Settings → Secrets and variables → Actions)
+
+| Type | Name | Value |
+| --- | --- | --- |
+| **Variable** | `FIREBASE_PROJECT_ID` | Your Firebase project id |
+| **Secret** | `FIREBASE_SERVICE_ACCOUNT` | A Firebase service-account JSON key (full contents) |
+
+The easiest way to generate the service-account secret is:
+
+```bash
+firebase init hosting:github
+```
+
+This connects the repo and stores the service account secret for you automatically.
+(If you prefer manual setup: Firebase Console → Project Settings → Service accounts →
+Generate new private key, then paste the JSON into the `FIREBASE_SERVICE_ACCOUNT` secret.)
+
+Once configured, push to `main`:
+
+```bash
+git add .
+git commit -m "Launch gondalsoft website"
+git push origin main
+```
+
+GitHub Actions builds and deploys automatically.
+
+---
+
+## Connecting your Hostinger domain
+
+Your domain stays registered at Hostinger; Firebase serves the site.
+
+1. In **Firebase Console → Hosting → Add custom domain**, enter your domain
+   (e.g. `gondalsoft.com`). Firebase shows you DNS records to add.
+2. In **Hostinger → Domains → DNS / Nameservers → DNS Zone**, add the records Firebase gives you:
+   - Two **A records** for the apex domain (`@`) pointing to Firebase's IPs
+     (typically `151.101.1.195` and `151.101.65.195` — always use the exact values Firebase shows you).
+   - For `www`, add the **A records** (or a `CNAME` to your `*.web.app` host) as instructed.
+3. Remove any old/conflicting A or CNAME records for those hosts in Hostinger.
+4. Back in Firebase, wait for verification. SSL certificates are provisioned automatically
+   (can take from minutes up to ~24 hours as DNS propagates).
+
+> Tip: If you only manage DNS at Hostinger (not nameservers), just edit the DNS Zone.
+> Do **not** change nameservers unless you intend to move DNS hosting elsewhere.
+
+---
+
+## License
+
+© gondalsoft. All rights reserved.
