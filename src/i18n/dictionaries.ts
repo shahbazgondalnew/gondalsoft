@@ -20,6 +20,13 @@ export type WorkItem = {
   tags: string[];
 };
 
+export type PrivacyBlock =
+  | { type: "heading"; text: string }
+  | { type: "subheading"; text: string }
+  | { type: "paragraph"; text: string }
+  | { type: "list"; items: string[] }
+  | { type: "contact"; label: string; email: string };
+
 export type Dictionary = {
   meta: {
     title: string;
@@ -97,7 +104,7 @@ export type Dictionary = {
       emailLabel: string;
       email: string;
       phoneLabel: string;
-      phone: string;
+      phones: { label: string; number: string }[];
       locationLabel: string;
       location: string;
     };
@@ -108,6 +115,14 @@ export type Dictionary = {
     servicesTitle: string;
     contactTitle: string;
     rights: string;
+    privacy: string;
+    backHome: string;
+  };
+  privacy: {
+    title: string;
+    updated: string;
+    intro: string;
+    blocks: PrivacyBlock[];
   };
 };
 
@@ -313,9 +328,12 @@ const en: Dictionary = {
     },
     info: {
       emailLabel: "Email",
-      email: "hello@gondalsoft.com",
+      email: "shahbaz.gondal588@gmail.com",
       phoneLabel: "Phone",
-      phone: "+1 (000) 000-0000",
+      phones: [
+        { label: "Saudi Arabia", number: "+966538518945" },
+        { label: "Pakistan", number: "+923130041445" },
+      ],
       locationLabel: "Location",
       location: "Remote · Worldwide",
     },
@@ -327,6 +345,116 @@ const en: Dictionary = {
     servicesTitle: "Services",
     contactTitle: "Contact",
     rights: "All rights reserved.",
+    privacy: "Privacy Policy",
+    backHome: "Back to home",
+  },
+  privacy: {
+    title: "Privacy Policy",
+    updated: "Last updated: June 2026",
+    intro:
+      'At GondalSoft, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services, including our mobile applications and website (collectively referred to as "the Services"). By using our Services, you consent to the data practices described in this policy.',
+    blocks: [
+      { type: "heading", text: "1. Information We Collect" },
+      { type: "subheading", text: "Personal Information" },
+      {
+        type: "paragraph",
+        text: "We may collect personal information that you provide directly to us, including:",
+      },
+      {
+        type: "list",
+        items: [
+          "Email address",
+          "Any other information you choose to provide when you create an account or contact us",
+        ],
+      },
+      { type: "subheading", text: "Non-Personal Information" },
+      {
+        type: "paragraph",
+        text: "No uploaded content is shown to the public unless you want to show it (by changing privacy to public). By default, the privacy of uploaded content is private. We may automatically collect certain non-personal information when you use our Services, including:",
+      },
+      {
+        type: "list",
+        items: [
+          "Device information (e.g., device type, operating system)",
+          "Usage data (e.g., time and date of access, features used)",
+          "IP address",
+          "Browser type and settings",
+        ],
+      },
+      { type: "heading", text: "2. How We Use Your Information" },
+      {
+        type: "paragraph",
+        text: "We may use the information we collect for various purposes, including:",
+      },
+      {
+        type: "list",
+        items: [
+          "To provide, maintain, and improve our Services",
+          "To authenticate users during the login process",
+          "To personalize your experience and deliver content tailored to your interests",
+          "To communicate with you, including sending updates and notifications",
+          "To analyze usage and trends to improve our Services",
+          "To prevent fraudulent or unauthorized activities",
+        ],
+      },
+      { type: "heading", text: "3. Data Sharing and Disclosure" },
+      {
+        type: "paragraph",
+        text: "Third-Party Service Providers: We do not share your personal information with third parties. We may use third-party service providers for specific tasks (e.g., analytics), but they are not permitted to use your personal information for any purpose other than to assist us.",
+      },
+      {
+        type: "paragraph",
+        text: "Legal Compliance: We may disclose your information if required to do so by law or in response to valid requests by public authorities.",
+      },
+      {
+        type: "paragraph",
+        text: "Business Transfers: If we are involved in a merger, acquisition, or asset sale, your personal information may be transferred.",
+      },
+      { type: "heading", text: "4. Data Security" },
+      {
+        type: "paragraph",
+        text: "We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. However, please be aware that no method of transmission over the Internet or method of electronic storage is 100% secure.",
+      },
+      { type: "heading", text: "5. User Rights" },
+      {
+        type: "paragraph",
+        text: "You have the following rights regarding your personal information:",
+      },
+      {
+        type: "list",
+        items: [
+          "Access: Request access to your personal information",
+          "Correction: Request correction of inaccuracies",
+          "Deletion: Request deletion of your information",
+          "Opt-Out: Opt out of promotional communications",
+        ],
+      },
+      { type: "heading", text: "6. Cookies and Tracking Technologies" },
+      {
+        type: "paragraph",
+        text: "Our Services may use cookies and similar tracking technologies to enhance user experience. You can choose to accept or decline cookies through your browser settings.",
+      },
+      { type: "heading", text: "7. Children's Privacy" },
+      {
+        type: "paragraph",
+        text: "Our Services are safe for children under 13. We do not knowingly collect personal information from children.",
+      },
+      { type: "heading", text: "8. Changes to This Privacy Policy" },
+      {
+        type: "paragraph",
+        text: "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on our website and updating the effective date.",
+      },
+      { type: "heading", text: "9. Contact Us" },
+      {
+        type: "paragraph",
+        text: "If you have any questions or concerns about this Privacy Policy, please contact us at:",
+      },
+      {
+        type: "contact",
+        label: "Email",
+        email: "shahbaz.gondal588@gmail.com",
+      },
+    ],
   },
 };
 
@@ -529,9 +657,12 @@ const ar: Dictionary = {
     },
     info: {
       emailLabel: "البريد الإلكتروني",
-      email: "hello@gondalsoft.com",
+      email: "shahbaz.gondal588@gmail.com",
       phoneLabel: "الهاتف",
-      phone: "+1 (000) 000-0000",
+      phones: [
+        { label: "السعودية", number: "+966538518945" },
+        { label: "باكستان", number: "+923130041445" },
+      ],
       locationLabel: "الموقع",
       location: "عن بُعد · حول العالم",
     },
@@ -543,6 +674,116 @@ const ar: Dictionary = {
     servicesTitle: "الخدمات",
     contactTitle: "تواصل",
     rights: "جميع الحقوق محفوظة.",
+    privacy: "سياسة الخصوصية",
+    backHome: "العودة إلى الرئيسية",
+  },
+  privacy: {
+    title: "سياسة الخصوصية",
+    updated: "آخر تحديث: يونيو 2026",
+    intro:
+      'في غوندال برمجيات، نلتزم بحماية خصوصيتك. توضّح سياسة الخصوصية هذه كيف نجمع معلوماتك ونستخدمها ونكشف عنها ونحافظ عليها عند استخدامك لخدماتنا، بما في ذلك تطبيقات الجوال والموقع الإلكتروني (يُشار إليها مجتمعةً بـ "الخدمات"). باستخدامك لخدماتنا، فإنك توافق على ممارسات البيانات الموضّحة في هذه السياسة.',
+    blocks: [
+      { type: "heading", text: "١. المعلومات التي نجمعها" },
+      { type: "subheading", text: "المعلومات الشخصية" },
+      {
+        type: "paragraph",
+        text: "قد نجمع معلومات شخصية تقدّمها لنا مباشرةً، بما في ذلك:",
+      },
+      {
+        type: "list",
+        items: [
+          "عنوان البريد الإلكتروني",
+          "أي معلومات أخرى تختار تقديمها عند إنشاء حساب أو التواصل معنا",
+        ],
+      },
+      { type: "subheading", text: "المعلومات غير الشخصية" },
+      {
+        type: "paragraph",
+        text: "لا يُعرَض أي محتوى مرفوع للعامة إلا إذا رغبت في إظهاره (بتغيير الخصوصية إلى عام). افتراضيًا، تكون خصوصية المحتوى المرفوع خاصة. وقد نجمع تلقائيًا بعض المعلومات غير الشخصية عند استخدامك لخدماتنا، بما في ذلك:",
+      },
+      {
+        type: "list",
+        items: [
+          "معلومات الجهاز (مثل نوع الجهاز ونظام التشغيل)",
+          "بيانات الاستخدام (مثل وقت وتاريخ الوصول والميزات المستخدمة)",
+          "عنوان IP",
+          "نوع المتصفح وإعداداته",
+        ],
+      },
+      { type: "heading", text: "٢. كيف نستخدم معلوماتك" },
+      {
+        type: "paragraph",
+        text: "قد نستخدم المعلومات التي نجمعها لأغراض متعددة، بما في ذلك:",
+      },
+      {
+        type: "list",
+        items: [
+          "تقديم خدماتنا وصيانتها وتحسينها",
+          "مصادقة المستخدمين أثناء عملية تسجيل الدخول",
+          "تخصيص تجربتك وتقديم محتوى مصمّم وفق اهتماماتك",
+          "التواصل معك، بما في ذلك إرسال التحديثات والإشعارات",
+          "تحليل الاستخدام والاتجاهات لتحسين خدماتنا",
+          "منع الأنشطة الاحتيالية أو غير المصرّح بها",
+        ],
+      },
+      { type: "heading", text: "٣. مشاركة البيانات والإفصاح عنها" },
+      {
+        type: "paragraph",
+        text: "مزوّدو الخدمات الخارجيون: نحن لا نشارك معلوماتك الشخصية مع أطراف ثالثة. وقد نستعين بمزوّدي خدمات خارجيين لمهام محددة (مثل التحليلات)، لكن لا يُسمح لهم باستخدام معلوماتك الشخصية لأي غرض سوى مساعدتنا.",
+      },
+      {
+        type: "paragraph",
+        text: "الامتثال القانوني: قد نكشف عن معلوماتك إذا تطلّب القانون ذلك أو استجابةً لطلبات صحيحة من السلطات العامة.",
+      },
+      {
+        type: "paragraph",
+        text: "عمليات نقل الأعمال: في حال اندماجنا أو استحواذنا أو بيع أصولنا، قد يتم نقل معلوماتك الشخصية.",
+      },
+      { type: "heading", text: "٤. أمن البيانات" },
+      {
+        type: "paragraph",
+        text: "نتخذ تدابير معقولة لحماية معلوماتك الشخصية من الوصول أو الاستخدام أو الإفصاح غير المصرّح به. ومع ذلك، يُرجى العلم بأنه لا توجد وسيلة نقل عبر الإنترنت أو وسيلة تخزين إلكتروني آمنة بنسبة 100%.",
+      },
+      { type: "heading", text: "٥. حقوق المستخدم" },
+      {
+        type: "paragraph",
+        text: "لديك الحقوق التالية فيما يتعلق بمعلوماتك الشخصية:",
+      },
+      {
+        type: "list",
+        items: [
+          "الوصول: طلب الوصول إلى معلوماتك الشخصية",
+          "التصحيح: طلب تصحيح المعلومات غير الدقيقة",
+          "الحذف: طلب حذف معلوماتك",
+          "إلغاء الاشتراك: إلغاء الاشتراك في الرسائل الترويجية",
+        ],
+      },
+      { type: "heading", text: "٦. ملفات تعريف الارتباط وتقنيات التتبّع" },
+      {
+        type: "paragraph",
+        text: "قد تستخدم خدماتنا ملفات تعريف الارتباط وتقنيات تتبّع مماثلة لتحسين تجربة المستخدم. يمكنك اختيار قبول ملفات تعريف الارتباط أو رفضها من خلال إعدادات متصفحك.",
+      },
+      { type: "heading", text: "٧. خصوصية الأطفال" },
+      {
+        type: "paragraph",
+        text: "خدماتنا آمنة للأطفال دون سن 13 عامًا. ولا نجمع عن قصد معلومات شخصية من الأطفال.",
+      },
+      { type: "heading", text: "٨. التغييرات على سياسة الخصوصية" },
+      {
+        type: "paragraph",
+        text: "قد نُحدّث سياسة الخصوصية هذه من وقت لآخر. وسنخطرك بأي تغييرات عبر نشر السياسة الجديدة على موقعنا وتحديث تاريخ السريان.",
+      },
+      { type: "heading", text: "٩. تواصل معنا" },
+      {
+        type: "paragraph",
+        text: "إذا كان لديك أي أسئلة أو مخاوف بشأن سياسة الخصوصية هذه، يُرجى التواصل معنا عبر:",
+      },
+      {
+        type: "contact",
+        label: "البريد الإلكتروني",
+        email: "shahbaz.gondal588@gmail.com",
+      },
+    ],
   },
 };
 

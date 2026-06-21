@@ -56,9 +56,14 @@ export default async function LocaleLayout({
     <html
       lang={typedLocale}
       dir={dir}
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${cairo.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body
+        className="min-h-full flex flex-col bg-background text-foreground"
+        suppressHydrationWarning
+      >
         <Navbar locale={typedLocale} dict={dict} />
         <main className="flex-1">{children}</main>
         <Footer locale={typedLocale} dict={dict} />

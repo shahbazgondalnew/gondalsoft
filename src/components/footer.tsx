@@ -51,7 +51,17 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                   {dict.contact.info.email}
                 </a>
               </li>
-              <li>{dict.contact.info.phone}</li>
+              {dict.contact.info.phones.map((p) => (
+                <li key={p.number}>
+                  <a
+                    href={`tel:${p.number}`}
+                    dir="ltr"
+                    className="inline-block transition-colors hover:text-foreground"
+                  >
+                    {p.label}: {p.number}
+                  </a>
+                </li>
+              ))}
               <li>{dict.contact.info.location}</li>
             </ul>
           </div>
@@ -61,7 +71,15 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <p>
             © {year} {dict.brand.name}. {dict.footer.rights}
           </p>
-          <p className="text-xs">{dict.brand.tagline}</p>
+          <div className="flex items-center gap-4">
+            <Link
+              href={`/${locale}/privacy-policy`}
+              className="transition-colors hover:text-foreground"
+            >
+              {dict.footer.privacy}
+            </Link>
+            <span className="text-xs">{dict.brand.tagline}</span>
+          </div>
         </div>
       </div>
     </footer>

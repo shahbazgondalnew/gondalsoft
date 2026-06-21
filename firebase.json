@@ -8,6 +8,16 @@
         "source": "/",
         "destination": "/en/",
         "type": 302
+      },
+      {
+        "source": "/privacy",
+        "destination": "/en/privacy/",
+        "type": 302
+      },
+      {
+        "source": "/privacy-policy",
+        "destination": "/en/privacy-policy/",
+        "type": 302
       }
     ],
     "cleanUrls": false,

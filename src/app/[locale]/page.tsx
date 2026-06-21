@@ -271,10 +271,25 @@ export default async function HomePage({
                     value={dict.contact.info.email}
                     href={`mailto:${dict.contact.info.email}`}
                   />
-                  <ContactInfo
-                    label={dict.contact.info.phoneLabel}
-                    value={dict.contact.info.phone}
-                  />
+                  <div>
+                    <dt className="text-xs uppercase tracking-wide text-muted">
+                      {dict.contact.info.phoneLabel}
+                    </dt>
+                    <dd className="mt-1 space-y-1">
+                      {dict.contact.info.phones.map((p) => (
+                        <div key={p.number} className="text-base">
+                          <span className="text-muted">{p.label}: </span>
+                          <a
+                            href={`tel:${p.number}`}
+                            dir="ltr"
+                            className="transition-colors hover:text-accent"
+                          >
+                            {p.number}
+                          </a>
+                        </div>
+                      ))}
+                    </dd>
+                  </div>
                   <ContactInfo
                     label={dict.contact.info.locationLabel}
                     value={dict.contact.info.location}
