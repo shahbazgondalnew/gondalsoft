@@ -259,25 +259,88 @@ const en: Dictionary = {
       "A glimpse of the kind of software we love to build across industries.",
     items: [
       {
+        category: "Mobile · Web · POS",
+        title: "Keevana — Mobile POS",
+        description:
+          "An all-in-one Point of Sale app for retailers with sales tracking, inventory management, barcode scanning, digital receipts, employee roles and offline mode.",
+        tags: ["Flutter", "iOS", "Android", "Firebase"],
+      },
+      {
+        category: "Mobile · Education",
+        title: "Derivative Calculator",
+        description:
+          "A scientific calculator with fractions, roots and advanced math symbols, plus multi-language step-by-step solutions.",
+        tags: ["Flutter", "Firebase Functions", "MathQuill"],
+      },
+      {
         category: "Mobile · AI",
-        title: "Smart Health Companion",
+        title: "AI Math Solver",
         description:
-          "An AI-powered mobile app that tracks habits and gives personalized wellness guidance.",
-        tags: ["iOS", "Android", "AI"],
+          "An AI-powered math solver with a professional math input/output interface and localized, well-formatted answers.",
+        tags: ["Flutter", "AI", "WebView"],
       },
       {
-        category: "Web · SaaS",
-        title: "Business Analytics Platform",
+        category: "Mobile · AI",
+        title: "Handwriting to Text (OCR)",
         description:
-          "A real-time dashboard that turns complex data into clear, actionable insight.",
-        tags: ["Next.js", "Cloud", "Dashboard"],
+          "Fast and accurate handwriting recognition that converts notes to text, both online and offline.",
+        tags: ["Flutter", "Google ML Kit", "OCR"],
       },
       {
-        category: "Startup · MVP",
-        title: "On-Demand Marketplace",
+        category: "Mobile · AI",
+        title: "AI Photo Enhancer",
         description:
-          "From a founder's idea to a launched marketplace connecting customers and providers.",
-        tags: ["Flutter", "Firebase", "Payments"],
+          "AI photo tools: colorize black & white images, unblur and enhance photos, and generate a \u201CFuture Kid\u201D image.",
+        tags: ["Flutter", "AI", "Firebase"],
+      },
+      {
+        category: "Mobile · Web",
+        title: "Origin Of: Meme, Trend & Story",
+        description:
+          "A discovery platform that reveals the backstories, sources and significance of trending images.",
+        tags: ["Flutter", "Firebase", "AdMob"],
+      },
+      {
+        category: "Mobile · E-commerce",
+        title: "Nexamena",
+        description:
+          "An electronics e-commerce app with cart, Google Maps, order tracking and Stripe payments.",
+        tags: ["Flutter", "Stripe", "Firebase"],
+      },
+      {
+        category: "Mobile · AI",
+        title: "PawID — Pets Info",
+        description:
+          "An AI app that detects dog breeds from camera or gallery images using vision and generative models.",
+        tags: ["Flutter", "Google Vision", "Gemini"],
+      },
+      {
+        category: "Mobile",
+        title: "AutoKaar",
+        description:
+          "An appointment app connecting drivers with mechanics, featuring real-time chat, service history and location-based search.",
+        tags: ["Flutter", "Firebase", "Google Maps"],
+      },
+      {
+        category: "Web",
+        title: "Property Hub",
+        description:
+          "A secure property transactions platform with user authentication and role-based access control.",
+        tags: ["ASP.NET", "MVC", "SQL"],
+      },
+      {
+        category: "Desktop",
+        title: "Cricket Club Management",
+        description:
+          "A sports management system that lets coaches and players manage teams and personal profiles.",
+        tags: ["Windows Forms", "SQL"],
+      },
+      {
+        category: "AI · Data",
+        title: "Data Scraping & AI Projects",
+        description:
+          "A set of AI projects including GPT integration, LLM fine-tuning, geospatial visualization and web-scraping automation.",
+        tags: ["Python", "OpenAI", "Tableau"],
       },
     ],
   },
@@ -589,25 +652,88 @@ const ar: Dictionary = {
     subheading: "لمحة عن نوع البرمجيات التي نحب بناءها عبر مختلف القطاعات.",
     items: [
       {
+        category: "جوال · ويب · نقاط بيع",
+        title: "Keevana — نقاط بيع متنقلة",
+        description:
+          "تطبيق نقاط بيع متكامل للتجار مع متابعة المبيعات وإدارة المخزون ومسح الباركود والإيصالات الرقمية وصلاحيات الموظفين ووضع العمل دون اتصال.",
+        tags: ["Flutter", "iOS", "أندرويد", "Firebase"],
+      },
+      {
+        category: "جوال · تعليم",
+        title: "حاسبة المشتقات",
+        description:
+          "حاسبة علمية تدعم الكسور والجذور والرموز الرياضية المتقدمة مع خطوات حل متعددة اللغات.",
+        tags: ["Flutter", "Firebase Functions", "MathQuill"],
+      },
+      {
         category: "جوال · ذكاء اصطناعي",
-        title: "رفيق الصحة الذكي",
+        title: "حلّال الرياضيات بالذكاء الاصطناعي",
         description:
-          "تطبيق جوال مدعوم بالذكاء الاصطناعي يتابع العادات ويقدّم إرشادات صحية مخصّصة.",
-        tags: ["iOS", "أندرويد", "ذكاء اصطناعي"],
+          "حلّال رياضيات مدعوم بالذكاء الاصطناعي بواجهة إدخال وإخراج رياضية احترافية وإجابات منسّقة ومترجمة.",
+        tags: ["Flutter", "ذكاء اصطناعي", "WebView"],
       },
       {
-        category: "ويب · SaaS",
-        title: "منصة تحليلات الأعمال",
+        category: "جوال · ذكاء اصطناعي",
+        title: "تحويل الكتابة اليدوية إلى نص (OCR)",
         description:
-          "لوحة تحكم لحظية تحوّل البيانات المعقّدة إلى رؤى واضحة قابلة للتنفيذ.",
-        tags: ["Next.js", "سحابة", "لوحة تحكم"],
+          "تعرّف سريع ودقيق على الكتابة اليدوية لتحويل الملاحظات إلى نص، عبر الإنترنت أو دون اتصال.",
+        tags: ["Flutter", "Google ML Kit", "OCR"],
       },
       {
-        category: "شركة ناشئة · MVP",
-        title: "سوق عند الطلب",
+        category: "جوال · ذكاء اصطناعي",
+        title: "محسّن الصور بالذكاء الاصطناعي",
         description:
-          "من فكرة مؤسس إلى سوق مُطلق يربط العملاء بمقدّمي الخدمات.",
-        tags: ["Flutter", "Firebase", "مدفوعات"],
+          "أدوات صور بالذكاء الاصطناعي: تلوين الصور بالأبيض والأسود، وإزالة التشويش وتحسين الصور، وإنشاء صورة «طفل المستقبل».",
+        tags: ["Flutter", "ذكاء اصطناعي", "Firebase"],
+      },
+      {
+        category: "جوال · ويب",
+        title: "أصل: ميم واتجاه وقصة",
+        description:
+          "منصة استكشاف تكشف القصص الخلفية للصور الرائجة ومصادرها وأهميتها.",
+        tags: ["Flutter", "Firebase", "AdMob"],
+      },
+      {
+        category: "جوال · تجارة إلكترونية",
+        title: "Nexamena",
+        description:
+          "تطبيق تجارة إلكترونية للإلكترونيات مع سلة شراء وخرائط جوجل وتتبّع الطلبات ومدفوعات Stripe.",
+        tags: ["Flutter", "Stripe", "Firebase"],
+      },
+      {
+        category: "جوال · ذكاء اصطناعي",
+        title: "PawID — معلومات الحيوانات",
+        description:
+          "تطبيق ذكاء اصطناعي يتعرّف على سلالات الكلاب من صور الكاميرا أو المعرض باستخدام نماذج الرؤية والتوليد.",
+        tags: ["Flutter", "Google Vision", "Gemini"],
+      },
+      {
+        category: "جوال",
+        title: "AutoKaar",
+        description:
+          "تطبيق مواعيد يربط السائقين بالميكانيكيين، مع محادثة لحظية وسجل خدمات وبحث حسب الموقع.",
+        tags: ["Flutter", "Firebase", "خرائط جوجل"],
+      },
+      {
+        category: "ويب",
+        title: "Property Hub",
+        description:
+          "منصة آمنة لمعاملات العقارات مع مصادقة المستخدمين والتحكم بالوصول حسب الأدوار.",
+        tags: ["ASP.NET", "MVC", "SQL"],
+      },
+      {
+        category: "سطح المكتب",
+        title: "نظام إدارة نادي الكريكيت",
+        description:
+          "نظام لإدارة الرياضة يتيح للمدربين واللاعبين إدارة الفرق والملفات الشخصية.",
+        tags: ["Windows Forms", "SQL"],
+      },
+      {
+        category: "ذكاء اصطناعي · بيانات",
+        title: "مشاريع استخلاص البيانات والذكاء الاصطناعي",
+        description:
+          "مجموعة مشاريع ذكاء اصطناعي تشمل دمج GPT وضبط نماذج اللغة والتصوير الجغرافي وأتمتة استخلاص الويب.",
+        tags: ["Python", "OpenAI", "Tableau"],
       },
     ],
   },
