@@ -18,6 +18,13 @@ export type WorkItem = {
   title: string;
   description: string;
   tags: string[];
+  comingSoon?: boolean;
+  platforms?: ("android" | "ios" | "mac")[];
+  stores?: {
+    android?: string;
+    ios?: string;
+    mac?: string;
+  };
 };
 
 export type PrivacyBlock =
@@ -75,6 +82,14 @@ export type Dictionary = {
     eyebrow: string;
     heading: string;
     subheading: string;
+    comingSoon: string;
+    getTheApp: string;
+    availableOn: string;
+    playStore: string;
+    appStore: string;
+    macAppStore: string;
+    storeComingSoon: string;
+    close: string;
     items: WorkItem[];
   };
   about: {
@@ -82,6 +97,16 @@ export type Dictionary = {
     heading: string;
     body: string[];
     values: { title: string; description: string }[];
+    me: {
+      eyebrow: string;
+      name: string;
+      role: string;
+      location: string;
+      body: string[];
+      highlights: { label: string; value: string }[];
+      linksLabel: string;
+      links: { label: string; href: string }[];
+    };
   };
   ctaBand: {
     heading: string;
@@ -257,7 +282,29 @@ const en: Dictionary = {
     heading: "Ideas we turned into products",
     subheading:
       "A glimpse of the kind of software we love to build across industries.",
+    comingSoon: "Coming soon",
+    getTheApp: "Get the app",
+    availableOn: "Available on Android, iOS and Mac",
+    playStore: "Google Play",
+    appStore: "App Store",
+    macAppStore: "Mac App Store",
+    storeComingSoon: "Coming soon",
+    close: "Close",
     items: [
+      {
+        category: "Mobile · Desktop · Productivity",
+        title: "AllConvert — Image & PDF Converter",
+        description:
+          "Convert images and documents to PDF, turn PDFs into images or Word, scan with the camera, and organize files — merge, split, compress, rotate, reorder and extract pages — all on your device.",
+        tags: ["Flutter", "Android", "iOS", "Mac"],
+        comingSoon: true,
+        platforms: ["android", "ios", "mac"],
+        stores: {
+          android: "",
+          ios: "",
+          mac: "",
+        },
+      },
       {
         category: "Mobile · Web · POS",
         title: "Keevana — Mobile POS",
@@ -369,6 +416,42 @@ const en: Dictionary = {
         description: "Architecture and infrastructure ready for real growth.",
       },
     ],
+    me: {
+      eyebrow: "The founder",
+      name: "Shahbaz Gondal",
+      role: "Founder · Flutter & Full-Stack Developer",
+      location: "Riyadh, Saudi Arabia · Remote worldwide",
+      body: [
+        "Shahbaz Gondal is the founder of gondalsoft and a Flutter developer focused on cross-platform iOS, Android, web and desktop products. He builds with clean architecture, offline-first design, and practical AI features.",
+        "His work covers POS and marketplace platforms, vehicle-assistance apps, education and utility tools, and on-device apps like AllConvert. He ships with Flutter, Firebase, NestJS, Next.js and Google Cloud — delivering client products as well as published apps of his own.",
+        "He holds a Bachelor of Computer Science and partners with startups and businesses that need reliable mobile products — from MVP to production, including Play Store and App Store releases.",
+      ],
+      highlights: [
+        { label: "Focus", value: "Flutter · iOS · Android · Web" },
+        { label: "Stack", value: "Firebase · NestJS · Next.js · GCP" },
+        { label: "Also shipping", value: "AI features · Offline-first · POS" },
+        { label: "Education", value: "B.S. Computer Science" },
+      ],
+      linksLabel: "Connect with the founder",
+      links: [
+        {
+          label: "LinkedIn",
+          href: "https://www.linkedin.com/in/shahbazgondal/",
+        },
+        {
+          label: "GitHub",
+          href: "https://github.com/shahbazgondalnew",
+        },
+        {
+          label: "Medium",
+          href: "https://medium.com/@shahbaz.gondal588",
+        },
+        {
+          label: "Portfolio",
+          href: "https://shahbazgondalnew.github.io/shahbazgondal/",
+        },
+      ],
+    },
   },
   ctaBand: {
     heading: "Have an idea? Let's build it together.",
@@ -650,7 +733,29 @@ const ar: Dictionary = {
     eyebrow: "أعمالنا",
     heading: "أفكار حوّلناها إلى منتجات",
     subheading: "لمحة عن نوع البرمجيات التي نحب بناءها عبر مختلف القطاعات.",
+    comingSoon: "قريبًا",
+    getTheApp: "احصل على التطبيق",
+    availableOn: "متاح على أندرويد وiOS وMac",
+    playStore: "Google Play",
+    appStore: "App Store",
+    macAppStore: "Mac App Store",
+    storeComingSoon: "قريبًا",
+    close: "إغلاق",
     items: [
+      {
+        category: "جوال · سطح المكتب · إنتاجية",
+        title: "AllConvert — محوّل الصور وPDF",
+        description:
+          "حوّل الصور والمستندات إلى PDF، وحوّل ملفات PDF إلى صور أو Word، وامسح بالكاميرا، ونظّم الملفات — دمج وتقسيم وضغط وتدوير وإعادة ترتيب واستخراج الصفحات — كل ذلك على جهازك.",
+        tags: ["Flutter", "أندرويد", "iOS", "Mac"],
+        comingSoon: true,
+        platforms: ["android", "ios", "mac"],
+        stores: {
+          android: "",
+          ios: "",
+          mac: "",
+        },
+      },
       {
         category: "جوال · ويب · نقاط بيع",
         title: "Keevana — نقاط بيع متنقلة",
@@ -762,6 +867,42 @@ const ar: Dictionary = {
         description: "بنية وبنية تحتية جاهزة للنمو الحقيقي.",
       },
     ],
+    me: {
+      eyebrow: "المؤسس",
+      name: "شهباز غوندال",
+      role: "المؤسس · مطوّر Flutter ومطوّر شامل",
+      location: "الرياض، المملكة العربية السعودية · عن بُعد حول العالم",
+      body: [
+        "شهباز غوندال هو مؤسس غوندال برمجيات ومطوّر Flutter يركّز على منتجات متعدّدة المنصات لـ iOS وأندرويد والويب وسطح المكتب. يبني ببنية نظيفة وتصميم يعمل دون اتصال وميزات ذكاء اصطناعي عملية.",
+        "يشمل عمله منصات نقاط البيع والأسواق، وتطبيقات المساعدة على الطريق، وأدوات التعليم والمرافق، وتطبيقات على الجهاز مثل AllConvert. يعمل بـ Flutter وFirebase وNestJS وNext.js وGoogle Cloud — ويسلّم منتجات للعملاء وكذلك تطبيقات منشورة خاصة به.",
+        "يحمل بكالوريوس علوم الحاسب ويتعاون مع الشركات الناشئة والمؤسسات التي تحتاج منتجات جوال موثوقة — من النموذج الأولي إلى الإنتاج، بما في ذلك النشر على Google Play وApp Store.",
+      ],
+      highlights: [
+        { label: "التركيز", value: "Flutter · iOS · أندرويد · ويب" },
+        { label: "التقنيات", value: "Firebase · NestJS · Next.js · GCP" },
+        { label: "أيضًا", value: "ذكاء اصطناعي · Offline-first · نقاط بيع" },
+        { label: "التعليم", value: "بكالوريوس علوم الحاسب" },
+      ],
+      linksLabel: "تواصل مع المؤسس",
+      links: [
+        {
+          label: "LinkedIn",
+          href: "https://www.linkedin.com/in/shahbazgondal/",
+        },
+        {
+          label: "GitHub",
+          href: "https://github.com/shahbazgondalnew",
+        },
+        {
+          label: "Medium",
+          href: "https://medium.com/@shahbaz.gondal588",
+        },
+        {
+          label: "المعرض",
+          href: "https://shahbazgondalnew.github.io/shahbazgondal/",
+        },
+      ],
+    },
   },
   ctaBand: {
     heading: "لديك فكرة؟ لنبنِها معًا.",

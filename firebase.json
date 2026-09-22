@@ -18,6 +18,26 @@
         "source": "/privacy-policy",
         "destination": "/en/privacy-policy/",
         "type": 302
+      },
+      {
+        "source": "/allconvert/privacy",
+        "destination": "/en/allconvert/privacy-policy/",
+        "type": 302
+      },
+      {
+        "source": "/allconvert/privacy-policy",
+        "destination": "/en/allconvert/privacy-policy/",
+        "type": 302
+      },
+      {
+        "source": "/allconvert/terms",
+        "destination": "/en/allconvert/terms-of-use/",
+        "type": 302
+      },
+      {
+        "source": "/allconvert/terms-of-use",
+        "destination": "/en/allconvert/terms-of-use/",
+        "type": 302
       }
     ],
     "cleanUrls": false,

@@ -1,10 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale, locales, type Locale } from "@/i18n/config";
 import { Reveal } from "@/components/reveal";
 import { ServiceIcon } from "@/components/icons";
 import { ContactForm } from "@/components/contact-form";
+import { ProductCard } from "@/components/product-card";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -167,30 +169,7 @@ export default async function HomePage({
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {dict.work.items.map((w, i) => (
               <Reveal key={w.title} delay={i * 100}>
-                <div className="card group h-full overflow-hidden rounded-2xl">
-                  <div className="relative h-40 bg-glow">
-                    <div className="absolute inset-0 bg-gradient-to-br from-brand/30 to-accent/20" />
-                    <span className="absolute bottom-3 start-4 rounded-full bg-background/70 px-3 py-1 text-xs font-medium text-foreground backdrop-blur">
-                      {w.category}
-                    </span>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold">{w.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">
-                      {w.description}
-                    </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {w.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-md bg-brand/10 px-2.5 py-1 text-xs text-brand"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                <ProductCard item={w} labels={dict.work} />
               </Reveal>
             ))}
           </div>
@@ -229,6 +208,79 @@ export default async function HomePage({
               ))}
             </div>
           </div>
+
+          <Reveal>
+            <div className="card mt-14 overflow-hidden rounded-3xl">
+              <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="border-b border-border p-6 sm:p-8 lg:border-b-0 lg:border-e">
+                  <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                    <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl border border-border bg-brand/10 sm:h-32 sm:w-32">
+                      <Image
+                        src="/shahbaz.jpg"
+                        alt={dict.about.me.name}
+                        fill
+                        sizes="128px"
+                        className="object-cover object-top"
+                        priority
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold uppercase tracking-wide text-accent">
+                        {dict.about.me.eyebrow}
+                      </p>
+                      <h3 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
+                        {dict.about.me.name}
+                      </h3>
+                      <p className="mt-2 text-sm font-medium text-foreground">
+                        {dict.about.me.role}
+                      </p>
+                      <p className="mt-1 text-sm text-muted">
+                        {dict.about.me.location}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-6 space-y-4 text-base leading-relaxed text-muted">
+                    {dict.about.me.body.map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
+                  </div>
+                  <div className="mt-8">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                      {dict.about.me.linksLabel}
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {dict.about.me.links.map((link) => (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full border border-border bg-white/5 px-4 py-2 text-sm font-medium transition-colors hover:border-brand/50 hover:text-accent"
+                        >
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="grid gap-3 bg-background-soft/50 p-6 sm:grid-cols-2 sm:p-8">
+                  {dict.about.me.highlights.map((h) => (
+                    <div
+                      key={h.label}
+                      className="rounded-2xl border border-border bg-background/40 p-4"
+                    >
+                      <p className="text-xs uppercase tracking-wide text-muted">
+                        {h.label}
+                      </p>
+                      <p className="mt-2 text-sm font-semibold leading-snug">
+                        {h.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
